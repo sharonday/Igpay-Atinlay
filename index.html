@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+  <title>Igpay Atinlay</title>
+
+  <!-- meta -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <h1>Igpay Atinlay</h1>
+  <h3>A Pig Latin Translator</h3>
+  <input type="text" />
+  <button type="button">Translate</button>
+  <h3>anlastedtray:</h3>
+  <p>the translated text</p>
+</body>
+<script>
+  // pig latin rules:
+  // 1. if a word starts w/consanant: move the consanant(s) to the end of the word and add "ay"
+  //  ex: world -> orldway
+  // 2. if a word starts w/a vowel: add "way" to the end
+  //  ex: index -> indexway
+  // 3. if a word does not have any vowels: add "ay" to the end
+  //  ex: rhythm -> rhythmay
+  var str = "hello world"; //to replace with input value
+  var vowels = ["a", "e", "i", "o", "u"];
+  var newStr = ""; //to display on page
+
+  function translateWord(input) {
+    // if word has no vowels
+    if (checkVowels(input) > 0) {
+      output = input + "ay";
+      return output;
+    }
+
+    //word has vowels
+    if (vowels.indexOf(input[0]) == 0) {
+      //starts with vowel
+      output = input + "way";
+    } else {
+      // starts with consanant
+      //
+    }
+    return output;
+  }
+
+  function checkVowels(input) {
+    let counter = 0;
+    for (let char of str.toLowerCase()) {
+      if (vowels.includes(char)) {
+        counter++;
+      }
+    }
+    return counter;
+  }
+</script>
