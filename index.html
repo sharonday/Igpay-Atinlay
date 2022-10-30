@@ -24,22 +24,43 @@
   //  ex: rhythm -> rhythmay
   var str = "hello world"; //to replace with input value
   var vowels = ["a", "e", "i", "o", "u"];
+  var suffix = "ay";
   var newStr = ""; //to display on page
+
+  function translatePhrase(input) {
+    let oldWords = input.split(" ");
+    let newWords = [];
+    for (let word of oldWords) {
+      newWords.push(translateWord(word));
+    }
+    output = newWords.join(" ");
+    return output;
+  }
 
   function translateWord(input) {
     // if word has no vowels
     if (checkVowels(input) > 0) {
-      output = input + "ay";
+      output = input + suffix;
       return output;
     }
 
     //word has vowels
     if (vowels.indexOf(input[0]) == 0) {
       //starts with vowel
-      output = input + "way";
+      output = input + "w" + suffix;
     } else {
       // starts with consanant
-      //
+      let firstVowel = 0;
+      for (i = 0; i < input.length(); i++) {
+        if (vowels.contains(input.charAt(i))) {
+          firstVowel = i;
+          break;
+        }
+      }
+      output =
+        input.slice(firstVowel, input.length() - 1) +
+        input.slice(0, firstVowel - 1) +
+        suffix;
     }
     return output;
   }
